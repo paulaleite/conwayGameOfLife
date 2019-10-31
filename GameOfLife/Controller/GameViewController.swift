@@ -15,8 +15,7 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         // Adds the view of the Scene
-        let sceneView = SCNView(frame: self.view.frame)
-        self.view.addSubview(sceneView)
+        guard let sceneView = self.view as? SCNView else { return }
         
         // Adds the Scene
         let scene  = SCNScene()
