@@ -26,6 +26,22 @@ class GameViewController: UIViewController {
         let camera = SCNCamera()
         let cameraNode = SCNNode()
         cameraNode.camera = camera
+        cameraNode.position = SCNVector3(x: 0.0, y: 0.0, z: 3.0)
+        
+        // Adds light
+        let light = SCNLight()
+        light.type = .omni
+        let lightNode = SCNNode()
+        lightNode.light = light
+        lightNode.position = SCNVector3(x: 1.5, y: 1.5, z: 1.5)
+        
+        // Adds cube
+        let cubeGeometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
+        let cubeNode = SCNNode(geometry: cubeGeometry)
+        
+        scene.rootNode.addChildNode(cameraNode)
+        scene.rootNode.addChildNode(lightNode)
+        scene.rootNode.addChildNode(cubeNode)
         
     }
     
