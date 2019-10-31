@@ -7,23 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E962CB7236B511100DCBA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CB6236B511100DCBA01 /* AppDelegate.swift */; };
 		1E962CB9236B511100DCBA01 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CB8236B511100DCBA01 /* art.scnassets */; };
 		1E962CBB236B511100DCBA01 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CBA236B511100DCBA01 /* GameViewController.swift */; };
 		1E962CBE236B511100DCBA01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CBC236B511100DCBA01 /* Main.storyboard */; };
 		1E962CC0236B511500DCBA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CBF236B511500DCBA01 /* Assets.xcassets */; };
 		1E962CC3236B511500DCBA01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CC1236B511500DCBA01 /* LaunchScreen.storyboard */; };
+		1E962CCE236B579700DCBA01 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CCD236B579700DCBA01 /* Cell.swift */; };
+		1E962CD3236B582100DCBA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CD2236B582100DCBA01 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1E962CB3236B511100DCBA01 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1E962CB6236B511100DCBA01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E962CB8236B511100DCBA01 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		1E962CBA236B511100DCBA01 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		1E962CBD236B511100DCBA01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1E962CBF236B511500DCBA01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E962CC2236B511500DCBA01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E962CC4236B511500DCBA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E962CCD236B579700DCBA01 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		1E962CD2236B582100DCBA01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,9 @@
 		1E962CAA236B511100DCBA01 = {
 			isa = PBXGroup;
 			children = (
+				1E962CCF236B57AD00DCBA01 /* Model */,
+				1E962CD0236B57B900DCBA01 /* View */,
+				1E962CD1236B57BF00DCBA01 /* Controller */,
 				1E962CB5236B511100DCBA01 /* GameOfLife */,
 				1E962CB4236B511100DCBA01 /* Products */,
 			);
@@ -56,15 +61,37 @@
 		1E962CB5236B511100DCBA01 /* GameOfLife */ = {
 			isa = PBXGroup;
 			children = (
-				1E962CB6236B511100DCBA01 /* AppDelegate.swift */,
+				1E962CD2236B582100DCBA01 /* AppDelegate.swift */,
 				1E962CB8236B511100DCBA01 /* art.scnassets */,
-				1E962CBA236B511100DCBA01 /* GameViewController.swift */,
-				1E962CBC236B511100DCBA01 /* Main.storyboard */,
 				1E962CBF236B511500DCBA01 /* Assets.xcassets */,
-				1E962CC1236B511500DCBA01 /* LaunchScreen.storyboard */,
 				1E962CC4236B511500DCBA01 /* Info.plist */,
 			);
 			path = GameOfLife;
+			sourceTree = "<group>";
+		};
+		1E962CCF236B57AD00DCBA01 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1E962CCD236B579700DCBA01 /* Cell.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1E962CD0236B57B900DCBA01 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1E962CBC236B511100DCBA01 /* Main.storyboard */,
+				1E962CC1236B511500DCBA01 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1E962CD1236B57BF00DCBA01 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1E962CBA236B511100DCBA01 /* GameViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,8 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E962CD3236B582100DCBA01 /* AppDelegate.swift in Sources */,
 				1E962CBB236B511100DCBA01 /* GameViewController.swift in Sources */,
-				1E962CB7236B511100DCBA01 /* AppDelegate.swift in Sources */,
+				1E962CCE236B579700DCBA01 /* Cell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
