@@ -42,6 +42,7 @@
 		1E962CAA236B511100DCBA01 = {
 			isa = PBXGroup;
 			children = (
+				1E962CCC236B555500DCBA01 /* Scene */,
 				1E962CB5236B511100DCBA01 /* GameOfLife */,
 				1E962CB4236B511100DCBA01 /* Products */,
 			);
@@ -156,6 +157,7 @@
 				1E962CC3236B511500DCBA01 /* LaunchScreen.storyboard in Resources */,
 				1E962CC0236B511500DCBA01 /* Assets.xcassets in Resources */,
 				1E962CBE236B511100DCBA01 /* Main.storyboard in Resources */,
+				1E962CCB236B552F00DCBA01 /* Matrix.scn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
