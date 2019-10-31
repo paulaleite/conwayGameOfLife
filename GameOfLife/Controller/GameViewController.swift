@@ -25,7 +25,7 @@ class GameViewController: UIViewController {
         // Adds camera
         let camera = SCNCamera()
         let cameraNode = SCNNode()
-        
+        cameraNode.camera = camera
         
     }
     
