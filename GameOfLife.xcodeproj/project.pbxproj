@@ -42,9 +42,6 @@
 		1E962CAA236B511100DCBA01 = {
 			isa = PBXGroup;
 			children = (
-				1E962CCF236B57AD00DCBA01 /* Model */,
-				1E962CD0236B57B900DCBA01 /* View */,
-				1E962CD1236B57BF00DCBA01 /* Controller */,
 				1E962CB5236B511100DCBA01 /* GameOfLife */,
 				1E962CB4236B511100DCBA01 /* Products */,
 			);
@@ -61,6 +58,9 @@
 		1E962CB5236B511100DCBA01 /* GameOfLife */ = {
 			isa = PBXGroup;
 			children = (
+				1E962CCF236B57AD00DCBA01 /* Model */,
+				1E962CD0236B57B900DCBA01 /* View */,
+				1E962CD1236B57BF00DCBA01 /* Controller */,
 				1E962CD2236B582100DCBA01 /* AppDelegate.swift */,
 				1E962CB8236B511100DCBA01 /* art.scnassets */,
 				1E962CBF236B511500DCBA01 /* Assets.xcassets */,
