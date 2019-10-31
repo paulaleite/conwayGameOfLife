@@ -61,9 +61,9 @@
 				1E962CCF236B57AD00DCBA01 /* Model */,
 				1E962CD0236B57B900DCBA01 /* View */,
 				1E962CD1236B57BF00DCBA01 /* Controller */,
-				1E962CD2236B582100DCBA01 /* AppDelegate.swift */,
 				1E962CB8236B511100DCBA01 /* art.scnassets */,
 				1E962CBF236B511500DCBA01 /* Assets.xcassets */,
+				1E962CD2236B582100DCBA01 /* AppDelegate.swift */,
 				1E962CC4236B511500DCBA01 /* Info.plist */,
 			);
 			path = GameOfLife;
