@@ -31,25 +31,30 @@ class Cube: SCNNode {
     func changeColor() {
         if state == .alive {
             state = .dead
-            geometry?.firstMaterial?.emission.contents = UIColor.gray
-            self.runAction(SCNAction.move(to: SCNVector3(CGFloat(self.position.x), CGFloat(self.position.y), 0.0), duration: 0.5))
+            animate(toZ: 0.0, withColor: .gray)
         } else {
             state = .alive
-            geometry?.firstMaterial?.emission.contents = UIColor.orange
-            self.runAction(SCNAction.move(to: SCNVector3(CGFloat(self.position.x), CGFloat(self.position.y), 1.0), duration: 0.5))
+            animate(toZ: 1.0, withColor: .orange)
         }
     }
     
-    func cubeBorn() {
+    func changeState(basedOn aliveNeighbours: [Cube]) {
+        if OverPopulationRule.isExecuted(for: self, basedOn: aliveNeighbours)
+            || SolitudeRule.isExecuted(for: self, basedOn: aliveNeighbours) {
+            self.state = .dead
+            animate(toZ: 0.0, withColor: .gray)
+        }
         
+        if SurvivesRule.isExecuted(for: self, basedOn: aliveNeighbours)
+            || BornRule.isExecuted(for: self, basedOn: aliveNeighbours) {
+            self.state = .alive
+            animate(toZ: 1.0, withColor: .orange)
+        }
     }
     
-    func cubeLives() {
-        
-    }
-    
-    func cubeDies() {
-        
+    func animate(toZ z: CGFloat, withColor color: UIColor) {
+        geometry?.firstMaterial?.emission.contents = color
+        self.runAction(SCNAction.move(to: SCNVector3(CGFloat(self.position.x), CGFloat(self.position.y), z), duration: 0.5))
     }
     
 }

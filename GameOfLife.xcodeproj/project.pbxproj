@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E07DDF5236CBAE8001AAEE6 /* Rules.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E07DDF4236CBAE8001AAEE6 /* Rules.swift */; };
 		1E962CB9236B511100DCBA01 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CB8236B511100DCBA01 /* art.scnassets */; };
 		1E962CBB236B511100DCBA01 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CBA236B511100DCBA01 /* GameViewController.swift */; };
 		1E962CBE236B511100DCBA01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CBC236B511100DCBA01 /* Main.storyboard */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E07DDF4236CBAE8001AAEE6 /* Rules.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rules.swift; sourceTree = "<group>"; };
 		1E962CB3236B511100DCBA01 /* GameOfLife.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameOfLife.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E962CB8236B511100DCBA01 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
 		1E962CBA236B511100DCBA01 /* GameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				1E962CCD236B579700DCBA01 /* Cube.swift */,
+				1E07DDF4236CBAE8001AAEE6 /* Rules.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 			files = (
 				1E962CD3236B582100DCBA01 /* AppDelegate.swift in Sources */,
 				1E962CBB236B511100DCBA01 /* GameViewController.swift in Sources */,
+				1E07DDF5236CBAE8001AAEE6 /* Rules.swift in Sources */,
 				1ECA054E236C9B3700725219 /* GameScene.swift in Sources */,
 				1E962CCE236B579700DCBA01 /* Cube.swift in Sources */,
 			);
