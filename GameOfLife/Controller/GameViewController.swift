@@ -11,6 +11,7 @@ import SceneKit
 
 class GameViewController: UIViewController {
     var button: UIButton?
+    var scene: GameScene?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +20,7 @@ class GameViewController: UIViewController {
         guard let sceneView = self.view as? SCNView else { return }
         
         // Adds the Scene
-        let scene = GameScene()
+        scene = GameScene()
         sceneView.scene = scene
         
         // Allow the player to move the camera
@@ -52,7 +53,7 @@ class GameViewController: UIViewController {
     }
     
     @objc func play() {
-        
+        scene?.startNewGeneration()
     }
     
     @objc func tap(_ gestureRecognizer: UIGestureRecognizer)  {
@@ -68,6 +69,16 @@ class GameViewController: UIViewController {
             guard let node = objectClicked.node as? Cube else { return }
             
             node.changeColor()
+            
+            for i in 0 ..< scene!.cubes.count {
+                for j in 0 ..< scene!.cubes[i].count {
+                    if node == scene!.cubes[i][j] {
+                        print(i)
+                        print(j)
+                        print()
+                    }
+                }
+            }
             
         }
     }

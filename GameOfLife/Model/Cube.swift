@@ -39,18 +39,24 @@ class Cube: SCNNode {
     }
     
     // Addapts to the rules
-    func changeState(basedOn aliveNeighbours: [Cube]) {
+    func getChangedState(basedOn cubes: [[Cube]]) -> CubeState {
+        let neighbours = getNeighbours(with: cubes)
+        // Everything that is .alive will be returned
+        let aliveNeighbours = neighbours.filter { (cube) -> Bool in
+            cube.state == .alive
+        }
+        
         if OverPopulationRule.isExecuted(for: self, basedOn: aliveNeighbours)
             || SolitudeRule.isExecuted(for: self, basedOn: aliveNeighbours) {
-            self.state = .dead
-            animate(toZ: 0.0, withColor: .gray)
+            return .dead
         }
         
         if SurvivesRule.isExecuted(for: self, basedOn: aliveNeighbours)
             || BornRule.isExecuted(for: self, basedOn: aliveNeighbours) {
-            self.state = .alive
-            animate(toZ: 1.0, withColor: .orange)
+            return .alive
         }
+        
+        return state
     }
     
     // Animates the matrix
@@ -122,6 +128,15 @@ class Cube: SCNNode {
         }
         
         return [-1, -1]
+    }
+    
+    func changeState(to state: CubeState) {
+        if state == .alive {
+            animate(toZ: 1.0, withColor: .orange)
+        } else {
+            animate(toZ: 0.0, withColor: .gray)
+        }
+        self.state = state
     }
     
 }
