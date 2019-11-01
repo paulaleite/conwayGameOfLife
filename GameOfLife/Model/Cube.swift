@@ -20,10 +20,21 @@ class Cube: SCNNode {
     override init() {
         super.init()
         self.geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
+        self.geometry?.firstMaterial?.emission.contents = UIColor.gray
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func changeColor() {
+        if state == .alive {
+            state = .dead
+            geometry?.firstMaterial?.emission.contents = UIColor.gray
+        } else {
+            state = .alive
+            geometry?.firstMaterial?.emission.contents = UIColor.orange
+        }
     }
 }

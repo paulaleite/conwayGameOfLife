@@ -18,7 +18,7 @@ class GameViewController: UIViewController {
         guard let sceneView = self.view as? SCNView else { return }
         
         // Adds the Scene
-        let scene  = GameScene()
+        let scene = GameScene()
         sceneView.scene = scene
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
@@ -37,6 +37,8 @@ class GameViewController: UIViewController {
         if hitResults.count > 0  {
             let objectClicked = hitResults[0]
             guard let node = objectClicked.node as? Cube else { return }
+            
+            node.changeColor()
             
         }
     }
