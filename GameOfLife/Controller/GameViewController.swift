@@ -10,6 +10,7 @@ import UIKit
 import SceneKit
 
 class GameViewController: UIViewController {
+    var button: UIButton?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,8 +22,33 @@ class GameViewController: UIViewController {
         let scene = GameScene()
         sceneView.scene = scene
         
+        // Makes the tap work
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         sceneView.addGestureRecognizer(tapGesture)
+        
+        createPlayButton()
+        
+    }
+    
+    func createPlayButton() {
+        button = UIButton(type: .system)
+        button?.setTitle("Play!", for: .normal)
+        button?.setTitleColor(.orange, for: .normal)
+        button?.titleLabel?.font = button?.titleLabel?.font.withSize(25)
+        button?.addTarget(self, action: #selector(play), for: .touchUpInside)
+        
+        guard let sceneView = self.view as? SCNView,
+            let button = button else { return }
+        sceneView.addSubview(button)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            button.centerXAnchor.constraint(equalTo: sceneView.centerXAnchor),
+            button.bottomAnchor.constraint(equalTo: sceneView.bottomAnchor, constant: -70)
+        ])
+    }
+    
+    @objc func play() {
         
     }
     
