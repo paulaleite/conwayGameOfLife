@@ -38,6 +38,7 @@ class Cube: SCNNode {
         }
     }
     
+    // Addapts to the rules
     func changeState(basedOn aliveNeighbours: [Cube]) {
         if OverPopulationRule.isExecuted(for: self, basedOn: aliveNeighbours)
             || SolitudeRule.isExecuted(for: self, basedOn: aliveNeighbours) {
@@ -52,9 +53,75 @@ class Cube: SCNNode {
         }
     }
     
+    // Animates the matrix
     func animate(toZ z: CGFloat, withColor color: UIColor) {
         geometry?.firstMaterial?.emission.contents = color
         self.runAction(SCNAction.move(to: SCNVector3(CGFloat(self.position.x), CGFloat(self.position.y), z), duration: 0.5))
+    }
+    
+    func getNeighbours(with cubes: [[Cube]]) -> [Cube] {
+        let index = findIndex(with: cubes)
+        let i = index[0]
+        let j = index[1]
+        if i == -1 || j == -1 {
+            return []
+        }
+        
+        var neighbours = [Cube]()
+        // Top
+        if j - 1 >= 0 {
+            neighbours.append(cubes[i][j - 1])
+        }
+        
+        // Bottom
+        if j + 1 < cubes.count {
+            neighbours.append(cubes[i][j + 1])
+        }
+        
+        // Right
+        if i + 1 < cubes.count {
+            neighbours.append(cubes[i + 1][j])
+        }
+        
+        // Left
+        if i - 1 >= 0 {
+            neighbours.append(cubes[i - 1][j])
+        }
+        
+        // Top Left
+        if i - 1 >= 0 && j - 1 >= 0 {
+            neighbours.append(cubes[i - 1][j - 1])
+        }
+        
+        // Top Right
+        if i - 1 >= 0 && j + 1 < cubes.count {
+            neighbours.append(cubes[i - 1][j + 1])
+        }
+        
+        // Bottom Left
+        if i + 1 < cubes.count && j - 1 >= 0 {
+            neighbours.append(cubes[i + 1][j - 1])
+        }
+        
+        // Bottom Right
+        if i + 1 < cubes.count && j + 1 < cubes.count {
+            neighbours.append(cubes[i + 1][j + 1])
+        }
+        
+        return neighbours
+    }
+    
+    // Finds the index of the cube that is required
+    func findIndex(with cubes: [[Cube]]) -> [Int] {
+        for i in 0 ..< cubes.count {
+            for j in 0 ..< cubes[i].count {
+                if self == cubes[i][j] {
+                    return [i, j]
+                }
+            }
+        }
+        
+        return [-1, -1]
     }
     
 }
