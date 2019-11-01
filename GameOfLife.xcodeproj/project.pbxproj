@@ -12,8 +12,9 @@
 		1E962CBE236B511100DCBA01 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CBC236B511100DCBA01 /* Main.storyboard */; };
 		1E962CC0236B511500DCBA01 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CBF236B511500DCBA01 /* Assets.xcassets */; };
 		1E962CC3236B511500DCBA01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CC1236B511500DCBA01 /* LaunchScreen.storyboard */; };
-		1E962CCE236B579700DCBA01 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CCD236B579700DCBA01 /* Cell.swift */; };
+		1E962CCE236B579700DCBA01 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CCD236B579700DCBA01 /* Cube.swift */; };
 		1E962CD3236B582100DCBA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CD2236B582100DCBA01 /* AppDelegate.swift */; };
+		1ECA054E236C9B3700725219 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECA054D236C9B3700725219 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +25,9 @@
 		1E962CBF236B511500DCBA01 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E962CC2236B511500DCBA01 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1E962CC4236B511500DCBA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1E962CCD236B579700DCBA01 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
+		1E962CCD236B579700DCBA01 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		1E962CD2236B582100DCBA01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1ECA054D236C9B3700725219 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,10 +41,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1E44DBDC236CA22E00D98FDE /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				1ECA054D236C9B3700725219 /* GameScene.swift */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		1E962CAA236B511100DCBA01 = {
 			isa = PBXGroup;
 			children = (
-				1E962CCC236B555500DCBA01 /* Scene */,
 				1E962CB5236B511100DCBA01 /* GameOfLife */,
 				1E962CB4236B511100DCBA01 /* Products */,
 			);
@@ -62,6 +71,7 @@
 				1E962CCF236B57AD00DCBA01 /* Model */,
 				1E962CD0236B57B900DCBA01 /* View */,
 				1E962CD1236B57BF00DCBA01 /* Controller */,
+				1E44DBDC236CA22E00D98FDE /* Scenes */,
 				1E962CB8236B511100DCBA01 /* art.scnassets */,
 				1E962CBF236B511500DCBA01 /* Assets.xcassets */,
 				1E962CD2236B582100DCBA01 /* AppDelegate.swift */,
@@ -73,7 +83,7 @@
 		1E962CCF236B57AD00DCBA01 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				1E962CCD236B579700DCBA01 /* Cell.swift */,
+				1E962CCD236B579700DCBA01 /* Cube.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -157,7 +167,6 @@
 				1E962CC3236B511500DCBA01 /* LaunchScreen.storyboard in Resources */,
 				1E962CC0236B511500DCBA01 /* Assets.xcassets in Resources */,
 				1E962CBE236B511100DCBA01 /* Main.storyboard in Resources */,
-				1E962CCB236B552F00DCBA01 /* Matrix.scn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,7 +179,8 @@
 			files = (
 				1E962CD3236B582100DCBA01 /* AppDelegate.swift in Sources */,
 				1E962CBB236B511100DCBA01 /* GameViewController.swift in Sources */,
-				1E962CCE236B579700DCBA01 /* Cell.swift in Sources */,
+				1ECA054E236C9B3700725219 /* GameScene.swift in Sources */,
+				1E962CCE236B579700DCBA01 /* Cube.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
