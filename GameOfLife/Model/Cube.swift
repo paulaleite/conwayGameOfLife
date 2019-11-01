@@ -32,9 +32,24 @@ class Cube: SCNNode {
         if state == .alive {
             state = .dead
             geometry?.firstMaterial?.emission.contents = UIColor.gray
+            self.runAction(SCNAction.move(to: SCNVector3(CGFloat(self.position.x), CGFloat(self.position.y), 0.0), duration: 0.5))
         } else {
             state = .alive
             geometry?.firstMaterial?.emission.contents = UIColor.orange
+            self.runAction(SCNAction.move(to: SCNVector3(CGFloat(self.position.x), CGFloat(self.position.y), 1.0), duration: 0.5))
         }
     }
+    
+    func cubeBorn() {
+        
+    }
+    
+    func cubeLives() {
+        
+    }
+    
+    func cubeDies() {
+        
+    }
+    
 }

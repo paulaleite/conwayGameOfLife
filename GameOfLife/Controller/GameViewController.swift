@@ -22,6 +22,9 @@ class GameViewController: UIViewController {
         let scene = GameScene()
         sceneView.scene = scene
         
+        // Allow the player to move the camera
+        sceneView.allowsCameraControl = true
+        
         // Makes the tap work
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
         sceneView.addGestureRecognizer(tapGesture)
