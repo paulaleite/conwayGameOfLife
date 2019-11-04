@@ -27,7 +27,7 @@ class GameViewController: UIViewController {
         sceneView.allowsCameraControl = true
         
         // Makes the tap work
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap(_: )))
         sceneView.addGestureRecognizer(tapGesture)
         
         createPlayButton()
@@ -68,17 +68,8 @@ class GameViewController: UIViewController {
             let objectClicked = hitResults[0]
             guard let node = objectClicked.node as? Element else { return }
             
-            node.changeColor()
-            
-            for i in 0 ..< scene!.elements.count {
-                for j in 0 ..< scene!.elements[i].count {
-                    if node == scene!.elements[i][j] {
-                        print(i)
-                        print(j)
-                        print()
-                    }
-                }
-            }
+            guard let height = scene?.height else { return }
+            node.changeColor(basedOn: height)
             
         }
     }

@@ -29,13 +29,17 @@ class Element: SCNNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func changeColor() {
+    func changeColor(basedOn height: Float) {
         if state == .alive {
             state = .dead
             animate(toZ: 0.0, withColor: .gray)
         } else {
             state = .alive
-            animate(toZ: 1.0, withColor: .orange)
+            if height.truncatingRemainder(dividingBy: 2.0) == 0 {
+                animate(toZ: 1.0, withColor: .orange)
+            } else {
+                animate(toZ: 1.0, withColor: .blue)
+            }
         }
     }
     
