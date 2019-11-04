@@ -12,6 +12,7 @@ import SceneKit
 class GameViewController: UIViewController {
     var button: UIButton?
     var scene: GameScene?
+    var element: Element?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,8 +69,7 @@ class GameViewController: UIViewController {
             let objectClicked = hitResults[0]
             guard let node = objectClicked.node as? Element else { return }
             
-            guard let height = scene?.height else { return }
-            node.changeColor(basedOn: height)
+            node.changeColor()
             
         }
     }

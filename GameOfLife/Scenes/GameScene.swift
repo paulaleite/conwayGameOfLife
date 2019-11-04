@@ -77,6 +77,7 @@ class GameScene: SCNScene {
                     if element.state == .alive {
                         self.rootNode.addChildNode(element)
                     }
+
                 }
                 
                 if i == half && j == half {
