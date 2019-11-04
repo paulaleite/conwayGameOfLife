@@ -130,11 +130,11 @@ class Cube: SCNNode {
         return [-1, -1]
     }
     
-    func changeState(to state: CubeState) {
+    func changeState(to state: CubeState, basedOn height: Float) {
         if state == .alive {
-            animate(toZ: 1.0, withColor: .orange)
+            animate(toZ: CGFloat(height + 1), withColor: .orange)
         } else {
-            animate(toZ: 0.0, withColor: .gray)
+            animate(toZ: CGFloat(height), withColor: .gray)
         }
         self.state = state
     }
