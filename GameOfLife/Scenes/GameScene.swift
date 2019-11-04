@@ -12,6 +12,8 @@ class GameScene: SCNScene {
     // Initializing the Cube Matrix, empty
     var cubes = [[Cube]]()
     var newGeneration = [[CubeState]]()
+    var height: Float = 0.0
+    var currentGeneration = 0
     
     override init() {
         super.init()
@@ -58,15 +60,24 @@ class GameScene: SCNScene {
         let half = Int(size/2)
         var centerCube = Cube()
 
-        for i in 0..<size {
+        cubes = []
+        for i in 0 ..< size {
             cubes.append([])
             for j in 0..<size {
                 let cube = Cube()
                 
-                cube.position = SCNVector3(1.15 * Float(i), 1.15 * Float(j), 0)
+                cube.position = SCNVector3(1.15 * Float(i), 1.15 * Float(j), 1.15 * height)
                 
-                rootNode.addChildNode(cube)
                 cubes[i].append(cube)
+                
+                if currentGeneration == 0 {
+                    self.rootNode.addChildNode(cube)
+                } else {
+                    cube.changeState(to: newGeneration[i][j], basedOn: height)
+                    if cube.state == .alive {
+                        self.rootNode.addChildNode(cube)
+                    }
+                }
                 
                 if i == half && j == half {
                     centerCube = cube
@@ -86,13 +97,15 @@ class GameScene: SCNScene {
             }
         }
         
-        updateStates()
+        height += 1
+        currentGeneration += 1
+        addGrid()
     }
     
     func updateStates() {
         for i in 0 ..< cubes.count {
             for j in 0 ..< cubes.count {
-                cubes[i][j].changeState(to: newGeneration[i][j])
+                cubes[i][j].changeState(to: newGeneration[i][j], basedOn: height)
             }
         }
     }
