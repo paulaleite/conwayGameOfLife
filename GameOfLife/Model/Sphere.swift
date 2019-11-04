@@ -19,9 +19,8 @@ class Sphere: SCNNode {
     
     override init() {
         super.init()
-        self.geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
+        self.geometry = SCNSphere(radius: 0.5)
         self.geometry?.firstMaterial?.emission.contents = UIColor.gray
-        
     }
     
     required init?(coder: NSCoder) {
