@@ -9,8 +9,8 @@
 import Foundation
 
 class OverPopulationRule {
-    static func isExecuted(for cube: Cube, basedOn aliveNeighbours: [Cube]) -> Bool {
-        if cube.state == .alive {
+    static func isExecuted(for element: Element, basedOn aliveNeighbours: [Element]) -> Bool {
+        if element.state == .alive {
             if aliveNeighbours.count >= 4 {
                 return true // .dead
             }
@@ -21,8 +21,8 @@ class OverPopulationRule {
 }
 
 class SolitudeRule {
-    static func isExecuted(for cube: Cube, basedOn aliveNeighbours: [Cube]) -> Bool {
-        if cube.state == .alive {
+    static func isExecuted(for element: Element, basedOn aliveNeighbours: [Element]) -> Bool {
+        if element.state == .alive {
             if aliveNeighbours.count < 2 {
                 return true // .dead
             }
@@ -33,8 +33,8 @@ class SolitudeRule {
 }
 
 class SurvivesRule {
-    static func isExecuted(for cube: Cube, basedOn aliveNeighbours: [Cube]) -> Bool {
-        if cube.state == .alive {
+    static func isExecuted(for element: Element, basedOn aliveNeighbours: [Element]) -> Bool {
+        if element.state == .alive {
             if aliveNeighbours.count >= 2 && aliveNeighbours.count <= 3 {
                 return true // .alive
             }
@@ -45,8 +45,8 @@ class SurvivesRule {
 }
 
 class BornRule {
-    static func isExecuted(for cube: Cube, basedOn aliveNeighbours: [Cube]) -> Bool {
-        if cube.state == .dead {
+    static func isExecuted(for element: Element, basedOn aliveNeighbours: [Element]) -> Bool {
+        if element.state == .dead {
             if aliveNeighbours.count == 3 {
                 return true // .alive
             }

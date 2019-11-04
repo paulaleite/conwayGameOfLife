@@ -8,18 +8,19 @@
 
 import SceneKit
 
-enum CubeState {
+enum ElementState {
     case alive
     case dead
 }
 
 // Creation of the base shape of the Game of Life
-class Cube: SCNNode {
-    var state: CubeState = .dead
+class Element: SCNNode {
+    var state: ElementState = .dead
     
     override init() {
         super.init()
-        self.geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
+        self.geometry = SCNSphere(radius: 0.5)
+//        self.geometry = SCNBox(width: 1.0, height: 1.0, length: 1.0, chamferRadius: 0.0)
         self.geometry?.firstMaterial?.emission.contents = UIColor.gray
         
     }
@@ -39,11 +40,11 @@ class Cube: SCNNode {
     }
     
     // Addapts to the rules
-    func getChangedState(basedOn cubes: [[Cube]]) -> CubeState {
-        let neighbours = getNeighbours(with: cubes)
+    func getChangedState(basedOn elements: [[Element]]) -> ElementState {
+        let neighbours = getNeighbours(with: elements)
         // Everything that is .alive will be returned
-        let aliveNeighbours = neighbours.filter { (cube) -> Bool in
-            cube.state == .alive
+        let aliveNeighbours = neighbours.filter { (element) -> Bool in
+            element.state == .alive
         }
         
         if OverPopulationRule.isExecuted(for: self, basedOn: aliveNeighbours)
@@ -65,63 +66,63 @@ class Cube: SCNNode {
         self.runAction(SCNAction.move(to: SCNVector3(CGFloat(self.position.x), CGFloat(self.position.y), z), duration: 0.5))
     }
     
-    func getNeighbours(with cubes: [[Cube]]) -> [Cube] {
-        let index = findIndex(with: cubes)
+    func getNeighbours(with elements: [[Element]]) -> [Element] {
+        let index = findIndex(with: elements)
         let i = index[0]
         let j = index[1]
         if i == -1 || j == -1 {
             return []
         }
         
-        var neighbours = [Cube]()
+        var neighbours = [Element]()
         // Top
         if j - 1 >= 0 {
-            neighbours.append(cubes[i][j - 1])
+            neighbours.append(elements[i][j - 1])
         }
         
         // Bottom
-        if j + 1 < cubes.count {
-            neighbours.append(cubes[i][j + 1])
+        if j + 1 < elements.count {
+            neighbours.append(elements[i][j + 1])
         }
         
         // Right
-        if i + 1 < cubes.count {
-            neighbours.append(cubes[i + 1][j])
+        if i + 1 < elements.count {
+            neighbours.append(elements[i + 1][j])
         }
         
         // Left
         if i - 1 >= 0 {
-            neighbours.append(cubes[i - 1][j])
+            neighbours.append(elements[i - 1][j])
         }
         
         // Top Left
         if i - 1 >= 0 && j - 1 >= 0 {
-            neighbours.append(cubes[i - 1][j - 1])
+            neighbours.append(elements[i - 1][j - 1])
         }
         
         // Top Right
-        if i - 1 >= 0 && j + 1 < cubes.count {
-            neighbours.append(cubes[i - 1][j + 1])
+        if i - 1 >= 0 && j + 1 < elements.count {
+            neighbours.append(elements[i - 1][j + 1])
         }
         
         // Bottom Left
-        if i + 1 < cubes.count && j - 1 >= 0 {
-            neighbours.append(cubes[i + 1][j - 1])
+        if i + 1 < elements.count && j - 1 >= 0 {
+            neighbours.append(elements[i + 1][j - 1])
         }
         
         // Bottom Right
-        if i + 1 < cubes.count && j + 1 < cubes.count {
-            neighbours.append(cubes[i + 1][j + 1])
+        if i + 1 < elements.count && j + 1 < elements.count {
+            neighbours.append(elements[i + 1][j + 1])
         }
         
         return neighbours
     }
     
-    // Finds the index of the cube that is required
-    func findIndex(with cubes: [[Cube]]) -> [Int] {
-        for i in 0 ..< cubes.count {
-            for j in 0 ..< cubes[i].count {
-                if self == cubes[i][j] {
+    // Finds the index of the element that is required
+    func findIndex(with elements: [[Element]]) -> [Int] {
+        for i in 0 ..< elements.count {
+            for j in 0 ..< elements[i].count {
+                if self == elements[i][j] {
                     return [i, j]
                 }
             }
@@ -130,9 +131,14 @@ class Cube: SCNNode {
         return [-1, -1]
     }
     
-    func changeState(to state: CubeState, basedOn height: Float) {
+    func changeState(to state: ElementState, basedOn height: Float) {
         if state == .alive {
-            animate(toZ: CGFloat(height + 1), withColor: .orange)
+            if height.truncatingRemainder(dividingBy: 2.0) == 0 {
+                animate(toZ: CGFloat(height + 1), withColor: .orange)
+            } else {
+                animate(toZ: CGFloat(height + 1), withColor: .systemTeal)
+            }
+
         } else {
             animate(toZ: CGFloat(height), withColor: .gray)
         }
