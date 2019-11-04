@@ -11,7 +11,7 @@ import Foundation
 class OverPopulationRule {
     static func isExecuted(for cube: Cube, basedOn aliveNeighbours: [Cube]) -> Bool {
         if cube.state == .alive {
-            if aliveNeighbours.count >= 4 {
+            if aliveNeighbours.count > 4 {
                 return true // .dead
             }
         }
@@ -47,7 +47,7 @@ class SurvivesRule {
 class BornRule {
     static func isExecuted(for cube: Cube, basedOn aliveNeighbours: [Cube]) -> Bool {
         if cube.state == .dead {
-            if aliveNeighbours.count == 3 {
+            if aliveNeighbours.count == 4 {
                 return true // .alive
             }
         }
