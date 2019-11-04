@@ -9,9 +9,9 @@
 import SceneKit
 
 class GameScene: SCNScene {
-    // Initializing the Cube Matrix, empty
-    var cubes = [[Cube]]()
-    var newGeneration = [[CubeState]]()
+    // Initializing the Element Matrix, empty
+    var elements = [[Element]]()
+    var newGeneration = [[ElementState]]()
     var height: Float = 0.0
     var currentGeneration = 0
     
@@ -46,8 +46,8 @@ class GameScene: SCNScene {
         rootNode.addChildNode(lightNode)
     }
     
-    func setConstraintCamera(_ centerCube: Cube) {
-        let constraint = SCNLookAtConstraint(target: centerCube)
+    func setConstraintCamera(_ centerElement: Element) {
+        let constraint = SCNLookAtConstraint(target: centerElement)
         constraint.isGimbalLockEnabled = true
         
         guard let cameraNode = rootNode.childNode(withName: "camera", recursively: true) else { return }
@@ -58,42 +58,42 @@ class GameScene: SCNScene {
         // Adds grid
         let size = 13
         let half = Int(size/2)
-        var centerCube = Cube()
+        var centerElement = Element()
 
-        cubes = []
+        elements = []
         for i in 0 ..< size {
-            cubes.append([])
+            elements.append([])
             for j in 0..<size {
-                let cube = Cube()
+                let element = Element()
                 
-                cube.position = SCNVector3(1.15 * Float(i), 1.15 * Float(j), 1.15 * height)
+                element.position = SCNVector3(1.15 * Float(i), 1.15 * Float(j), 1.15 * height)
                 
-                cubes[i].append(cube)
+                elements[i].append(element)
                 
                 if currentGeneration == 0 {
-                    self.rootNode.addChildNode(cube)
+                    self.rootNode.addChildNode(element)
                 } else {
-                    cube.changeState(to: newGeneration[i][j], basedOn: height)
-                    if cube.state == .alive {
-                        self.rootNode.addChildNode(cube)
+                    element.changeState(to: newGeneration[i][j], basedOn: height)
+                    if element.state == .alive {
+                        self.rootNode.addChildNode(element)
                     }
                 }
                 
                 if i == half && j == half {
-                    centerCube = cube
+                    centerElement = element
                 }
                 
-                setConstraintCamera(centerCube)
+                setConstraintCamera(centerElement)
             }
         }
     }
     
     func startNewGeneration() {
         newGeneration = [] // Makes sure that it always starts empty
-        for i in 0 ..< cubes.count {
+        for i in 0 ..< elements.count {
             newGeneration.append([])
-            for j in 0 ..< cubes[i].count {
-                newGeneration[i].append(cubes[i][j].getChangedState(basedOn: cubes))
+            for j in 0 ..< elements[i].count {
+                newGeneration[i].append(elements[i][j].getChangedState(basedOn: elements))
             }
         }
         
@@ -103,9 +103,9 @@ class GameScene: SCNScene {
     }
     
     func updateStates() {
-        for i in 0 ..< cubes.count {
-            for j in 0 ..< cubes.count {
-                cubes[i][j].changeState(to: newGeneration[i][j], basedOn: height)
+        for i in 0 ..< elements.count {
+            for j in 0 ..< elements.count {
+                elements[i][j].changeState(to: newGeneration[i][j], basedOn: height)
             }
         }
     }

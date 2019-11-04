@@ -14,7 +14,6 @@
 		1E962CC3236B511500DCBA01 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E962CC1236B511500DCBA01 /* LaunchScreen.storyboard */; };
 		1E962CCE236B579700DCBA01 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CCD236B579700DCBA01 /* Cube.swift */; };
 		1E962CD3236B582100DCBA01 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E962CD2236B582100DCBA01 /* AppDelegate.swift */; };
-		1EB2F81C2370A22A00A438C1 /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EB2F81B2370A22A00A438C1 /* Sphere.swift */; };
 		1ECA054E236C9B3700725219 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1ECA054D236C9B3700725219 /* GameScene.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +27,6 @@
 		1E962CC4236B511500DCBA01 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E962CCD236B579700DCBA01 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		1E962CD2236B582100DCBA01 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		1EB2F81B2370A22A00A438C1 /* Sphere.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
 		1ECA054D236C9B3700725219 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,7 +84,6 @@
 			children = (
 				1E962CCD236B579700DCBA01 /* Cube.swift */,
 				1E07DDF4236CBAE8001AAEE6 /* Rules.swift */,
-				1EB2F81B2370A22A00A438C1 /* Sphere.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -180,7 +177,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E962CD3236B582100DCBA01 /* AppDelegate.swift in Sources */,
-				1EB2F81C2370A22A00A438C1 /* Sphere.swift in Sources */,
 				1E962CBB236B511100DCBA01 /* GameViewController.swift in Sources */,
 				1E07DDF5236CBAE8001AAEE6 /* Rules.swift in Sources */,
 				1ECA054E236C9B3700725219 /* GameScene.swift in Sources */,

@@ -60,19 +60,19 @@ class GameViewController: UIViewController {
         // Adds the view of the Scene
         guard let sceneView = self.view as? SCNView else { return }
         
-        // Finds the cube that was touched
+        // Finds the element that was touched
         let point = gestureRecognizer.location(in: sceneView)
         let hitResults = sceneView.hitTest(point, options: [:])
         
         if hitResults.count > 0  {
             let objectClicked = hitResults[0]
-            guard let node = objectClicked.node as? Cube else { return }
+            guard let node = objectClicked.node as? Element else { return }
             
             node.changeColor()
             
-            for i in 0 ..< scene!.cubes.count {
-                for j in 0 ..< scene!.cubes[i].count {
-                    if node == scene!.cubes[i][j] {
+            for i in 0 ..< scene!.elements.count {
+                for j in 0 ..< scene!.elements[i].count {
+                    if node == scene!.elements[i][j] {
                         print(i)
                         print(j)
                         print()
