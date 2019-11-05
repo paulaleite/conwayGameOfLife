@@ -55,6 +55,13 @@ class GameViewController: UIViewController {
     
     @objc func play() {
         scene?.startNewGeneration()
+        scene?.rootNode.childNodes.forEach({ (node) in
+            if let element = node as? Element {
+                if element.state == .dead {
+                    element.removeFromParentNode()
+                }
+            }
+        })
     }
     
     @objc func tap(_ gestureRecognizer: UIGestureRecognizer)  {
